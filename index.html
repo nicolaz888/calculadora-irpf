@@ -3,9 +3,9 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content="Calculadora orientativa del IRPF para personas asalariadas en España. Consulta una estimación de tu retención anual." />
+    <meta name="description" content="Calculadora orientativa del IRPF 2026 para personas asalariadas en España. Estima retención de nómina y cuota anual." />
     <meta name="theme-color" content="#f4f1e9" />
-    <title>Calculadora IRPF | Estima tu retención</title>
+    <title>Calculadora IRPF 2026 | Cuenta Clara</title>
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
@@ -44,39 +44,66 @@
             <label for="region">Territorio de residencia fiscal</label>
             <select id="region" name="region" required>
               <option value="">Elige tu territorio</option>
-              <option>Andalucía</option><option>Aragón</option><option>Asturias</option><option>Illes Balears</option><option>Canarias</option><option>Cantabria</option><option>Castilla-La Mancha</option><option>Castilla y León</option><option>Cataluña</option><option>Comunitat Valenciana</option><option>Extremadura</option><option>Galicia</option><option>La Rioja</option><option>Comunidad de Madrid</option><option>Región de Murcia</option><option>Navarra</option><option>País Vasco</option><option>Ceuta</option><option>Melilla</option>
+              <option>Andalucía</option><option>Aragón</option><option>Asturias</option><option>Illes Balears</option><option>Canarias</option><option>Cantabria</option><option>Castilla-La Mancha</option><option>Castilla y León</option><option>Cataluña</option><option>Comunitat Valenciana</option><option>Extremadura</option><option>Galicia</option><option>La Rioja</option><option value="Comunidad de Madrid">Madrid (Comunidad de Madrid)</option><option>Región de Murcia</option><option>Navarra</option><option>País Vasco</option><option>Ceuta</option><option>Melilla</option>
             </select>
 
-            <label for="children">Hijos menores de 25 años a cargo <span class="field-hint">sin ingresos propios relevantes</span></label>
+            <label for="contributions">Cotizaciones a la Seguridad Social <span class="field-hint">estimación automática para contrato indefinido en el Régimen General</span></label>
+            <div class="money-input"><input id="contributions" name="contributions" type="number" min="0" max="100000" step="0.01" value="1950" readonly aria-describedby="contributions-note" /><span>€</span></div>
+            <p id="contributions-note" class="field-hint">Se actualizan al cambiar el salario. Supone salario uniforme prorrateado en 12 meses; la cifra real puede variar según tu contrato y nómina.</p>
+
+            <label for="birth-year">Año de nacimiento</label>
+            <input id="birth-year" name="birthYear" type="number" min="1900" max="2026" step="1" value="1990" required />
+
+            <label for="children">Hijos que dan derecho al mínimo <span class="field-hint">menores de 25 años, conviven contigo e ingresan menos de 8.000 €</span></label>
             <select id="children" name="children"><option value="0">Ninguno</option><option value="1">1 hijo</option><option value="2">2 hijos</option><option value="3">3 hijos</option><option value="4">4 o más</option></select>
+
+            <label for="children-under3">De esos hijos, menores de 3 años</label>
+            <select id="children-under3" name="childrenUnder3"><option value="0">Ninguno</option><option value="1">1</option><option value="2">2</option><option value="3">3 o más</option></select>
+
+            <label for="child-share">Parte del mínimo por hijos que te corresponde</label>
+            <select id="child-share" name="childShare"><option value="1">100 % (no se reparte)</option><option value="0.5">50 % (repartido con el otro progenitor)</option></select>
+
+            <div id="retention-fields">
+              <label for="family-status">Situación familiar para retenciones</label>
+              <select id="family-status" name="familyStatus"><option value="3">General</option><option value="2">Cónyuge con rentas bajas (hasta 1.500 € al año)</option><option value="1">Familia monoparental con hijos a cargo</option></select>
+              <label for="payments">Pagas al año</label>
+              <select id="payments" name="payments"><option value="12">12 pagas</option><option value="14">14 pagas</option></select>
+            </div>
+
+            <div id="annual-fields" hidden>
+              <label for="withheld">IRPF retenido estimado durante 2026</label>
+              <div class="money-input"><input id="withheld" name="withheld" type="number" min="0" max="1000000" step="10" value="0" inputmode="decimal" /><span>€</span></div>
+            </div>
 
             <button type="submit" class="submit-button">Ver mi estimación <span aria-hidden="true">↗</span></button>
             <p class="form-footnote">No pedimos tu nombre, email ni datos identificativos.</p>
           </form>
 
           <aside class="result-card" aria-live="polite" aria-atomic="true">
-            <p class="eyebrow">TU RESULTADO APARECERÁ AQUÍ</p>
+            <p id="result-heading" class="eyebrow">TU ESTIMACIÓN</p>
             <div id="result-content" class="result-placeholder"><span class="result-spark">✳</span><p>Completa los datos para ver una estimación orientativa de tu IRPF.</p></div>
             <div class="result-disclaimer">La cifra depende de tus circunstancias personales y de las reglas fiscales aplicables. No equivale al resultado de tu declaración.</div>
           </aside>
         </div>
-        <p class="data-note">Tus datos se quedan en este dispositivo. Esta primera versión aún no calcula: estamos validando los dos métodos de cálculo y los parámetros de 2026 para cada territorio.</p>
+        <p class="data-note">Estimación simplificada para rendimientos del trabajo. Para Navarra y País Vasco se enlaza a las haciendas forales. La cuota anual usa las últimas escalas autonómicas oficiales disponibles como referencia; algunas pueden cambiar antes de la campaña de Renta 2027.</p>
       </section>
 
       <section class="explainer" id="como-funciona">
         <p class="eyebrow">SIN LETRA PEQUEÑA</p><h2>Una estimación debe explicar sus límites.</h2>
-        <div class="explainer-grid"><article><span>01</span><h3>Retención o cuota</h3><p>La retención de la nómina es un pago a cuenta. No es el importe definitivo de tu declaración.</p></article><article><span>02</span><h3>Depende de tu situación</h3><p>El cálculo puede cambiar por comunidad, situación familiar, discapacidad y otros datos personales.</p></article><article id="limites"><span>03</span><h3>Reglas de 2026</h3><p>La AEAT actualizó el algoritmo de retenciones con efectos desde el 10 de septiembre de 2026. Revisamos la versión vigente antes de ofrecer resultados.</p></article></div>
+        <div class="explainer-grid"><article><span>01</span><h3>Retención o cuota</h3><p>La retención de la nómina es un pago a cuenta. No es el importe definitivo de tu declaración.</p></article><article><span>02</span><h3>Depende de tu situación</h3><p>El cálculo puede cambiar por comunidad, situación familiar, discapacidad y otros datos personales.</p></article><article id="limites"><span>03</span><h3>Alcance del cálculo</h3><p>La retención reproduce una estimación simplificada del procedimiento general. La cuota anual toma las escalas oficiales más recientes disponibles, no contempla deducciones autonómicas y puede cambiar cuando se publiquen las reglas completas de 2026.</p></article></div>
       </section>
 
       <section class="sources" aria-label="Fuentes oficiales">
         <p class="eyebrow">FUENTES OFICIALES</p>
         <p><a href="https://sede.agenciatributaria.gob.es/Sede/Retenciones.shtml" target="_blank" rel="noreferrer">Algoritmo y servicio de cálculo de retenciones de la AEAT ↗</a></p>
+        <p><a href="https://www.boe.es/eli/es/o/2026/03/30/pjc297" target="_blank" rel="noreferrer">Tipos y cotizaciones a la Seguridad Social para 2026 (BOE) ↗</a></p>
         <p><a href="https://sede.agenciatributaria.gob.es/Sede/ayuda/consultas-informaticas/renta-ayuda-tecnica/renta-web-open.html" target="_blank" rel="noreferrer">Simulador Renta WEB Open de la AEAT ↗</a></p>
       </section>
 
       <section class="ad-placeholder" aria-label="Espacio reservado para publicidad"><span>ESPACIO PARA PUBLICIDAD</span><p>La publicidad aparecerá aquí cuando el sitio esté publicado.</p></section>
     </main>
     <footer><a class="brand" href="#inicio"><span class="brand-mark">€</span> cuenta clara</a><p>Información orientativa, no asesoramiento fiscal.</p><div><a href="#limites">Límites de la estimación</a><a href="#como-funciona">Fuentes oficiales</a></div><small>© 2026 Cuenta Clara</small></footer>
+    <script src="tax-engine.js" defer></script>
     <script src="app.js" defer></script>
   </body>
 </html>
