@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Calculadora orientativa del IRPF para personas asalariadas en España. Consulta una estimación de tu retención anual." />
+    <meta name="theme-color" content="#f4f1e9" />
+    <title>Calculadora IRPF | Estima tu retención</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="#inicio" aria-label="Calculadora IRPF, inicio"><span class="brand-mark">€</span> cuenta clara</a>
+      <nav><a href="#como-funciona">Cómo funciona</a><a href="#limites">Límites</a></nav>
+    </header>
+
+    <main id="inicio">
+      <section class="hero">
+        <div class="hero-copy">
+          <p class="eyebrow">IRPF · ESPAÑA</p>
+          <h1>Que tu nómina<br />no te pille <em>por sorpresa.</em></h1>
+          <p class="intro">Una primera aproximación a tu retención anual para que puedas planificar con más calma.</p>
+          <a class="text-link" href="#calculadora">Calcular mi estimación <span aria-hidden="true">↓</span></a>
+        </div>
+        <div class="hero-note" aria-label="Información importante"><span class="note-icon">✳</span><p>Gratis, sin registro<br />y sin guardar tus datos</p></div>
+      </section>
+
+      <section class="calculator-section" id="calculadora">
+        <div class="section-heading">
+          <div><p class="eyebrow">ESTIMADOR SENCILLO</p><h2>Empieza por lo básico</h2></div>
+          <span class="year-tag">Ejercicio 2026</span>
+        </div>
+        <div class="calculator-grid">
+          <form id="tax-form" class="form-card">
+            <label for="calculation">¿Qué quieres estimar?</label>
+            <select id="calculation" name="calculation" required>
+              <option value="retencion">Retención en nómina durante 2026</option>
+              <option value="cuota">Cuota anual aproximada 2026 (Renta 2027)</option>
+            </select>
+
+            <label for="salary">Salario bruto anual <span class="field-hint">antes de impuestos</span></label>
+            <div class="money-input"><input id="salary" name="salary" type="number" min="0" max="1000000" step="100" value="30000" inputmode="decimal" required /><span>€</span></div>
+
+            <label for="region">Territorio de residencia fiscal</label>
+            <select id="region" name="region" required>
+              <option value="">Elige tu territorio</option>
+              <option>Andalucía</option><option>Aragón</option><option>Asturias</option><option>Illes Balears</option><option>Canarias</option><option>Cantabria</option><option>Castilla-La Mancha</option><option>Castilla y León</option><option>Cataluña</option><option>Comunitat Valenciana</option><option>Extremadura</option><option>Galicia</option><option>La Rioja</option><option>Comunidad de Madrid</option><option>Región de Murcia</option><option>Navarra</option><option>País Vasco</option><option>Ceuta</option><option>Melilla</option>
+            </select>
+
+            <label for="children">Hijos menores de 25 años a cargo <span class="field-hint">sin ingresos propios relevantes</span></label>
+            <select id="children" name="children"><option value="0">Ninguno</option><option value="1">1 hijo</option><option value="2">2 hijos</option><option value="3">3 hijos</option><option value="4">4 o más</option></select>
+
+            <button type="submit" class="submit-button">Ver mi estimación <span aria-hidden="true">↗</span></button>
+            <p class="form-footnote">No pedimos tu nombre, email ni datos identificativos.</p>
+          </form>
+
+          <aside class="result-card" aria-live="polite" aria-atomic="true">
+            <p class="eyebrow">TU RESULTADO APARECERÁ AQUÍ</p>
+            <div id="result-content" class="result-placeholder"><span class="result-spark">✳</span><p>Completa los datos para ver una estimación orientativa de tu IRPF.</p></div>
+            <div class="result-disclaimer">La cifra depende de tus circunstancias personales y de las reglas fiscales aplicables. No equivale al resultado de tu declaración.</div>
+          </aside>
+        </div>
+        <p class="data-note">Tus datos se quedan en este dispositivo. Esta primera versión aún no calcula: estamos validando los dos métodos de cálculo y los parámetros de 2026 para cada territorio.</p>
+      </section>
+
+      <section class="explainer" id="como-funciona">
+        <p class="eyebrow">SIN LETRA PEQUEÑA</p><h2>Una estimación debe explicar sus límites.</h2>
+        <div class="explainer-grid"><article><span>01</span><h3>Retención o cuota</h3><p>La retención de la nómina es un pago a cuenta. No es el importe definitivo de tu declaración.</p></article><article><span>02</span><h3>Depende de tu situación</h3><p>El cálculo puede cambiar por comunidad, situación familiar, discapacidad y otros datos personales.</p></article><article id="limites"><span>03</span><h3>Reglas de 2026</h3><p>La AEAT actualizó el algoritmo de retenciones con efectos desde el 10 de septiembre de 2026. Revisamos la versión vigente antes de ofrecer resultados.</p></article></div>
+      </section>
+
+      <section class="sources" aria-label="Fuentes oficiales">
+        <p class="eyebrow">FUENTES OFICIALES</p>
+        <p><a href="https://sede.agenciatributaria.gob.es/Sede/Retenciones.shtml" target="_blank" rel="noreferrer">Algoritmo y servicio de cálculo de retenciones de la AEAT ↗</a></p>
+        <p><a href="https://sede.agenciatributaria.gob.es/Sede/ayuda/consultas-informaticas/renta-ayuda-tecnica/renta-web-open.html" target="_blank" rel="noreferrer">Simulador Renta WEB Open de la AEAT ↗</a></p>
+      </section>
+
+      <section class="ad-placeholder" aria-label="Espacio reservado para publicidad"><span>ESPACIO PARA PUBLICIDAD</span><p>La publicidad aparecerá aquí cuando el sitio esté publicado.</p></section>
+    </main>
+    <footer><a class="brand" href="#inicio"><span class="brand-mark">€</span> cuenta clara</a><p>Información orientativa, no asesoramiento fiscal.</p><div><a href="#limites">Límites de la estimación</a><a href="#como-funciona">Fuentes oficiales</a></div><small>© 2026 Cuenta Clara</small></footer>
+    <script src="app.js" defer></script>
+  </body>
+</html>
