@@ -97,6 +97,21 @@ form.addEventListener('submit', (event) => {
     return;
   }
 
+  if (!TaxEngine2026.REGION_KEYS[data.region]) {
+    const foralMessage = data.region === 'Navarra'
+      ? 'Navarra tiene una Hacienda Foral y un cálculo de retenciones propio. Esta versión todavía no lo incorpora.'
+      : 'Los territorios históricos del País Vasco tienen Haciendas Forales y cálculos propios. Esta versión todavía no los incorpora.';
+    const link = document.createElement('a');
+    link.href = data.region === 'Navarra' ? 'https://www.navarra.es/es/hacienda' : 'https://www.euskadi.eus/tributos/';
+    link.target = '_blank';
+    link.rel = 'noreferrer';
+    link.className = 'official-link';
+    link.textContent = data.region === 'Navarra' ? 'Abrir Hacienda Foral de Navarra ↗' : 'Abrir las haciendas forales vascas ↗';
+    renderResult('Este territorio usa régimen foral', null, [], foralMessage);
+    result.append(link);
+    return;
+  }
+
   if (values.get('calculation') === 'retencion') {
     if (salary === 0) {
       renderResult('Retención estimada', euros(0), [['Tipo estimado', '0 %'], ['Retención anual', euros(0)]], 'Sin salario sujeto a retención, el cálculo da 0 €.');

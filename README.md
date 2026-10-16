@@ -6,7 +6,7 @@ Calculadora estática en español para asalariados. Se abre directamente desde `
 
 - **Retención de nómina:** estimación del tipo y del importe anual y por paga usando una versión simplificada del procedimiento general de retenciones de 2026. Incluye salario, cotizaciones, edad, descendientes, situación familiar y número de pagas.
 - **Cuota anual:** aproximación para un contribuyente con rendimientos del trabajo. Resta cotizaciones, gasto general y reducción por rendimientos del trabajo; aplica la tarifa estatal y la tarifa autonómica disponible y calcula el saldo indicativo tras las retenciones introducidas.
-- **Navarra y País Vasco:** se identifican como territorios forales y se enlaza a la administración correspondiente en vez de aplicarles tarifas del régimen común.
+- **Navarra y País Vasco:** se identifican como territorios forales y se enlaza a la administración correspondiente en vez de calcular con las reglas del régimen común.
 
 ## Límites importantes
 
@@ -24,4 +24,9 @@ La estimación de retención cubre el caso general y no todas las circunstancias
 - [Mínimos personales y familiares estatal y autonómicos (AEAT, IRPF 2025)](https://www3.agenciatributaria.gob.es/Sede/ayuda/manuales-videos-folletos/manuales-practicos/irpf-2025/c14-adecuacion-impuesto-circunstancias-personales/minimo-autonomico-personal-familiar/cuadro-minimos-personales-familiares-estatal-autonomicos.html)
 - [Ley 1/2026 de Extremadura (BOE)](https://www.boe.es/boe/dias/2026/08/17/pdfs/BOE-A-2026-17839.pdf)
 
-Antes de monetizar con publicidad, completa las páginas y avisos legales y de privacidad aplicables, define el consentimiento de cookies para los proveedores elegidos y revisa sus políticas de contenido fiscal.
+## Antes de publicar y solicitar AdSense
+
+- Completar con el proveedor de alojamiento elegido los apartados pendientes sobre registros técnicos, conservación y proveedores en las políticas de privacidad y cookies.
+- Revisar los datos del aviso legal antes de desplegarlo. Esa página contiene datos personales del titular y será pública al publicar el sitio.
+- Si se activa AdSense, actualizar privacidad y cookies, configurar una CMP certificada por Google e integrada con TCF para los anuncios personalizados en el EEE, y solo entonces cargar las etiquetas publicitarias.
+- Revisar la calculadora y la navegación en móvil y escritorio. Google revisa disponibilidad, experiencia de uso, contenido y cumplimiento de políticas; la aprobación no está garantizada.
