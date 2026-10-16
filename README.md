@@ -24,9 +24,10 @@ La estimación de retención cubre el caso general y no todas las circunstancias
 - [Mínimos personales y familiares estatal y autonómicos (AEAT, IRPF 2025)](https://www3.agenciatributaria.gob.es/Sede/ayuda/manuales-videos-folletos/manuales-practicos/irpf-2025/c14-adecuacion-impuesto-circunstancias-personales/minimo-autonomico-personal-familiar/cuadro-minimos-personales-familiares-estatal-autonomicos.html)
 - [Ley 1/2026 de Extremadura (BOE)](https://www.boe.es/boe/dias/2026/08/17/pdfs/BOE-A-2026-17839.pdf)
 
-## Antes de publicar y solicitar AdSense
+## Despliegue y AdSense
 
-- Completar con el proveedor de alojamiento elegido los apartados pendientes sobre registros técnicos, conservación y proveedores en las políticas de privacidad y cookies.
+- El sitio es estático y puede desplegarse en Cloudflare Pages conectado al repositorio de GitHub. Usa `main` como rama de producción, sin comando de compilación y con `.` como directorio de salida. Cada push a `main` puede activar un nuevo despliegue.
+- Tras publicar, comprobar que las páginas legales describen correctamente el proveedor y las funciones realmente activadas; las políticas actuales identifican Cloudflare Pages como alojamiento previsto.
 - Revisar los datos del aviso legal antes de desplegarlo. Esa página contiene datos personales del titular y será pública al publicar el sitio.
 - Si se activa AdSense, actualizar privacidad y cookies, configurar una CMP certificada por Google e integrada con TCF para los anuncios personalizados en el EEE, y solo entonces cargar las etiquetas publicitarias.
 - Revisar la calculadora y la navegación en móvil y escritorio. Google revisa disponibilidad, experiencia de uso, contenido y cumplimiento de políticas; la aprobación no está garantizada.
