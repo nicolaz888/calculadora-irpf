@@ -64,6 +64,19 @@ function renderResult(title, amount, rows, note, status = '') {
   disclaimer.className = 'result-note';
   disclaimer.textContent = note;
   result.append(disclaimer);
+
+  requestAnimationFrame(() => {
+    const card = result.closest('.result-card');
+    const target = result.querySelector('.result-amount, .result-title');
+    if (!card || !target) return;
+
+    const bounds = target.getBoundingClientRect();
+    const isVisible = bounds.top >= 0 && bounds.bottom <= window.innerHeight;
+    if (!isVisible) {
+      const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      card.scrollIntoView({ behavior: reducedMotion ? 'instant' : 'smooth', block: 'start' });
+    }
+  });
 }
 
 form.addEventListener('submit', (event) => {
