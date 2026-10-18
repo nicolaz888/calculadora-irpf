@@ -26,8 +26,8 @@ La estimación de retención cubre el caso general y no todas las circunstancias
 
 ## Despliegue y AdSense
 
-- El sitio es estático y puede desplegarse en Cloudflare Pages conectado al repositorio de GitHub. Usa `main` como rama de producción, sin comando de compilación y con `.` como directorio de salida. Cada push a `main` puede activar un nuevo despliegue.
-- Tras publicar, comprobar que las páginas legales describen correctamente el proveedor y las funciones realmente activadas; las políticas actuales identifican Cloudflare Pages como alojamiento previsto.
+- El sitio estático se sirve en producción desde Cloudflare Workers en `calculairpf.com` y `www.calculairpf.com`.
+- Las páginas de privacidad y cookies describen el alojamiento actual y dejan claro que AdSense aún no está activo. Antes de insertar etiquetas publicitarias, configura la CMP en AdSense y actualiza la información para que coincida con los proveedores y opciones realmente activados.
 - Revisar los datos del aviso legal antes de desplegarlo. Esa página contiene datos personales del titular y será pública al publicar el sitio.
-- Si se activa AdSense, actualizar privacidad y cookies, configurar una CMP certificada por Google e integrada con TCF para los anuncios personalizados en el EEE, y solo entonces cargar las etiquetas publicitarias.
+- Para anuncios personalizados en el EEE, Reino Unido o Suiza, Google exige una CMP certificada e integrada con TCF; no cargues etiquetas publicitarias hasta tener listo el consentimiento correspondiente.
 - Revisar la calculadora y la navegación en móvil y escritorio. Google revisa disponibilidad, experiencia de uso, contenido y cumplimiento de políticas; la aprobación no está garantizada.
