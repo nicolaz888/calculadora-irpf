@@ -326,6 +326,36 @@ main {
     color: #828980
 }
 
+.share-controls {
+    margin-top: 16px
+}
+
+.share-button {
+    border: 1px solid var(--green);
+    border-radius: 4px;
+    padding: 9px 13px;
+    background: transparent;
+    color: var(--green);
+    font: 600 12px system-ui, sans-serif;
+    cursor: pointer
+}
+
+.share-button:hover {
+    background: #275f4710
+}
+
+.share-button:focus-visible {
+    outline: 2px solid var(--green);
+    outline-offset: 3px
+}
+
+.share-status {
+    min-height: 16px;
+    margin: 6px 0 0;
+    color: var(--muted);
+    font-size: 11px
+}
+
 .data-note {
     font-size: 11px;
     line-height: 1.5;

@@ -5,6 +5,44 @@ const retentionFields = document.querySelector('#retention-fields');
 const annualFields = document.querySelector('#annual-fields');
 const salaryInput = document.querySelector('#salary');
 const contributionsInput = document.querySelector('#contributions');
+const shareButton = document.querySelector('#share-site');
+const shareStatus = document.querySelector('#share-status');
+
+shareButton.addEventListener('click', async () => {
+  const shareData = {
+    title: 'Calculadora IRPF 2026 | Cuenta Clara',
+    text: 'Calcula una estimación orientativa de tu retención o cuota anual de IRPF.',
+    url: `${window.location.origin}${window.location.pathname}`,
+  };
+
+  try {
+    if (navigator.share) {
+      await navigator.share(shareData);
+      shareStatus.textContent = 'Enlace compartido.';
+      return;
+    }
+
+    if (navigator.clipboard?.writeText) {
+      await navigator.clipboard.writeText(shareData.url);
+    } else {
+      const temporaryInput = document.createElement('textarea');
+      temporaryInput.value = shareData.url;
+      temporaryInput.setAttribute('readonly', '');
+      temporaryInput.style.position = 'absolute';
+      temporaryInput.style.left = '-9999px';
+      document.body.append(temporaryInput);
+      temporaryInput.select();
+      const copied = document.execCommand('copy');
+      temporaryInput.remove();
+      if (!copied) throw new Error('No se pudo copiar el enlace.');
+    }
+    shareStatus.textContent = 'Enlace copiado. Ya puedes compartirlo.';
+  } catch (error) {
+    if (error.name !== 'AbortError') {
+      shareStatus.textContent = 'No se pudo compartir. Copia el enlace desde la barra del navegador.';
+    }
+  }
+});
 
 function updateContributions() {
   contributionsInput.value = TaxEngine2026.estimateEmployeeContributions(Number(salaryInput.value) || 0).toFixed(2);
